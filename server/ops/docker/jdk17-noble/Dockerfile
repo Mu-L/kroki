@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.15
 
 ## Nomnoml
-FROM --platform=$BUILDPLATFORM node:22.14-bookworm-slim AS kroki-builder-nomnoml
+FROM --platform=$BUILDPLATFORM node:22.15-bookworm-slim AS kroki-builder-nomnoml
 
 RUN npm install -g @yao-pkg/pkg@5.16.1 @yao-pkg/pkg-fetch@3.5.20
 
@@ -54,7 +54,7 @@ RUN npm install --target_arch=$([ "$TARGETARCH" = "amd64" ] && echo "x64" || ech
 RUN pkg --targets $NODE-$TARGETOS-$([ "$TARGETARCH" = "amd64" ] && echo "x64" || echo "$TARGETARCH") . -o app.bin
 
 ## DBML
-FROM --platform=$BUILDPLATFORM node:22.14-bookworm-slim AS kroki-builder-dbml
+FROM --platform=$BUILDPLATFORM node:22.15-bookworm-slim AS kroki-builder-dbml
 
 RUN npm install -g @yao-pkg/pkg@5.16.1 @yao-pkg/pkg-fetch@3.5.20
 
@@ -70,7 +70,7 @@ RUN npm install --target_arch=$([ "$TARGETARCH" = "amd64" ] && echo "x64" || ech
 RUN /usr/local/bin/pkg --targets $NODE-$TARGETOS-$([ "$TARGETARCH" = "amd64" ] && echo "x64" || echo "$TARGETARCH") . -o app.bin
 
 ## Wavedrom
-FROM --platform=$BUILDPLATFORM node:22.14-bookworm-slim AS kroki-builder-wavedrom
+FROM --platform=$BUILDPLATFORM node:22.15-bookworm-slim AS kroki-builder-wavedrom
 
 RUN npm install -g @yao-pkg/pkg@5.16.1 @yao-pkg/pkg-fetch@3.5.20
 
@@ -86,7 +86,7 @@ RUN npm install --target_arch=$([ "$TARGETARCH" = "amd64" ] && echo "x64" || ech
 RUN /usr/local/bin/pkg --targets $NODE-$TARGETOS-$([ "$TARGETARCH" = "amd64" ] && echo "x64" || echo "$TARGETARCH") . -o app.bin
 
 ## Bytefield
-FROM --platform=$BUILDPLATFORM node:22.14-bookworm-slim AS kroki-builder-bytefield
+FROM --platform=$BUILDPLATFORM node:22.15-bookworm-slim AS kroki-builder-bytefield
 
 RUN npm install -g @yao-pkg/pkg@5.16.1 @yao-pkg/pkg-fetch@3.5.20
 
@@ -179,11 +179,11 @@ FROM ghcr.io/yuzutech/erd:v0.2.3 AS erd
 FROM eclipse-temurin:17.0.14_7-jre-noble
 
 ARG BLOCKDIAG_VERSION="3.1.0"
-ARG D2_VERSION="0.6.9"
+ARG D2_VERSION="0.7.0"
 ARG DITAA_VERSION="1.0.3"
 ARG DVISVGM_VERSION="3.2.1+ds-1build1"
 ARG GRAPHVIZ_VERSION="9.0.0"
-ARG PLANTUML_VERSION="1.2025.0"
+ARG PLANTUML_VERSION="1.2025.2"
 ARG UMLET_VERSION="2023-03-20_UMLet_v15.1"
 ARG WIREVIZ_VERSION="0.3.3"
 ARG TARGETARCH

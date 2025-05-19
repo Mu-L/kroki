@@ -5,7 +5,7 @@
   <parent>
     <artifactId>kroki</artifactId>
     <groupId>io.kroki</groupId>
-    <version>0.27.0</version>
+    <version>0.28.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -13,12 +13,13 @@
 
   <properties>
     <!-- https://github.com/vert-x3/vertx-dependencies/blob/6b147024b6aa7732386c6a94a126eacf3b4dda1b/pom.xml#LL50C20-L50C32 -->
-    <netty.version>4.2.0.Final</netty.version>
+    <netty.version>4.2.1.Final</netty.version>
     <logback.version>1.5.18</logback.version>
     <vertx.version>4.5.14</vertx.version>
-    <junit.jupiter.version>5.12.1</junit.jupiter.version>
+    <opentelemetry.version>1.49.0</opentelemetry.version>
+    <junit.jupiter.version>5.12.2</junit.jupiter.version>
     <assertj-core.version>3.27.3</assertj-core.version>
-    <mockito-core.version>5.16.1</mockito-core.version>
+    <mockito-core.version>5.17.0</mockito-core.version>
     <slf4j-api.version>2.0.17</slf4j-api.version>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
@@ -32,6 +33,21 @@
 
   <dependencies>
     <dependency>
+      <groupId>io.opentelemetry</groupId>
+      <artifactId>opentelemetry-sdk</artifactId>
+      <version>${opentelemetry.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.opentelemetry</groupId>
+      <artifactId>opentelemetry-exporter-otlp</artifactId>
+      <version>${opentelemetry.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.opentelemetry</groupId>
+      <artifactId>opentelemetry-sdk-extension-autoconfigure</artifactId>
+      <version>${opentelemetry.version}</version>
+    </dependency>
+    <dependency>
       <groupId>io.vertx</groupId>
       <artifactId>vertx-core</artifactId>
       <version>${vertx.version}</version>
@@ -44,6 +60,11 @@
     <dependency>
       <groupId>io.vertx</groupId>
       <artifactId>vertx-web-client</artifactId>
+      <version>${vertx.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-opentelemetry</artifactId>
       <version>${vertx.version}</version>
     </dependency>
     <dependency>
